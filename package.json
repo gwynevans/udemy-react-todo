@@ -1,8 +1,8 @@
 {
   "name": "udemy-react-timer",
   "version": "1.0.0",
-  "description": "Example React Timer App",
-  "main": "server.js",
+  "description": "Simple react app",
+  "main": "index.js",
   "scripts": {
     "start": "node server.js",
     "test": "karma start"
@@ -39,5 +39,5 @@
     "style-loader": "^0.13.0",
     "webpack": "^1.12.13"
   },
-  "repository": "gwynevans/udemy-react-weather"
+  "repository": "gwynevans/udemy-react-todo"
 }
