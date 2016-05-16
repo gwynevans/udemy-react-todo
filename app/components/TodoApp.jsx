@@ -29,12 +29,13 @@ var TodoApp = React.createClass({
   },
 
   render: function () {
-    var {todos} = this.state;
+    var {todos, showCompleted, searchText} = this.state;
     return (
       <div>
         <TodoSearch onSearch={this.handleSearch}/>
         <TodoList todos={todos}/>
         <AddTodo onAddTodo={this.handleAddTodo}/>
+        {showCompleted ? 'T' : 'F'}, {searchText}
       </div>
     )
   }
