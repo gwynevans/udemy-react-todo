@@ -27,7 +27,6 @@ describe('TodoAPI', () => {
 
       expect(localStorage.getItem('todos')).toBe(null);
     });
-
   });
 
   describe('get Todos', () => {
@@ -44,10 +43,6 @@ describe('TodoAPI', () => {
 
       expect(actualTodos).toEqual(todos);
     });
-
-
   });
-
-
 
 });
