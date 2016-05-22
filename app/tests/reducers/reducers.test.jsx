@@ -33,4 +33,64 @@ describe('Reducers', () => {
     });
   });
 
+  describe('todosReducer', () => {
+    it('should add new todo', () => {
+      var action = {
+        type: 'ADD_TODO',
+        text: 'Something'
+      };
+      var res = reducers.todosReducer(df([]), df(action));
+      expect(res.length).toEqual(1);
+      expect(res[0].text).toBe(action.text);
+      expect(res[0].createdAt).toBeA('number');
+    });
+
+    it('should set completed when toggle Todo called on uncompleted todo', () => {
+      var action = {
+        type: 'TOGGLE_TODO',
+        id: 1
+      };
+      var todos = [{
+        id:1,
+        completed: false,
+        completedAt: undefined,
+        createdAt: 0,
+        text:'Test Todo'
+      }];
+
+      var res = reducers.todosReducer(df(todos), df(action));
+      expect(res.length).toEqual(1);
+      expect(res[0].completed).toBe(true);
+      expect(res[0].completedAt).toBeA('number');
+    });
+
+    it('should clear completed when toggle Todo called on completed todo', () => {
+      var action = {
+        type: 'TOGGLE_TODO',
+        id: 1
+      };
+      var todos = [{
+        id: 1,
+        completed: true,
+        completedAt: 1,
+        createdAt: 0,
+        text:'Test Todo'
+      },
+      {
+        id: 2,
+        completed: false,
+        completedAt: undefined,
+        createdAt: 0,
+        text:'Test Todo'
+      }];
+
+      var res = reducers.todosReducer(df(todos), df(action));
+      expect(res.length).toEqual(2);
+      expect(res[0].completed).toBe(false);
+      expect(res[0].completedAt).toEqual(undefined);
+      expect(res[1]).toNotEqual(undefined);
+    });
+
+  });
+
 });
