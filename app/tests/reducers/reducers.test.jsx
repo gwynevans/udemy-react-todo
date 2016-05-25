@@ -45,6 +45,23 @@ describe('Reducers', () => {
       expect(res[0].createdAt).toBeA('number');
     });
 
+    it('should add existing todos', () => {
+      var todos = [{
+        id:1,
+        completed: false,
+        completedAt: undefined,
+        createdAt: 0,
+        text:'Test Todo'
+      }];
+      var action = {
+        type: 'ADD_TODOS',
+        todos
+      };
+      var res = reducers.todosReducer(df([]), df(action));
+      expect(res.length).toEqual(1);
+      expect(res[0]).toBe(todos[0]);
+    });
+
     it('should set completed when toggle Todo called on uncompleted todo', () => {
       var action = {
         type: 'TOGGLE_TODO',
