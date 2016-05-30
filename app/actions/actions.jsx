@@ -1,5 +1,8 @@
-export var addTodo = (text) => {
-  return { type: 'ADD_TODO', text }
+import firebase, {firebaseRef} from 'app/firebase/';
+import moment from 'moment';
+
+export var addTodo = (todo) => {
+  return { type: 'ADD_TODO', todo }
 };
 
 export var addTodos = (todos) => {
@@ -16,4 +19,23 @@ export var toggleShowCompleted = () => {
 
 export var toggleTodo = (id) => {
   return { type: 'TOGGLE_TODO', id }
+};
+
+export var startAddTodo = (text) => {
+  return (dispatch, getState) => {
+    var todo = {
+      completed: false,
+      completedAt: null,
+      createdAt: moment().unix(),
+      text
+    };
+    var todoRef = firebaseRef.child('todos').push(todo);
+
+    return todoRef.then(() => {
+      dispatch(addTodo({
+        ...todo,
+        id: todoRef.key
+      }));
+    });
+  };
 };
