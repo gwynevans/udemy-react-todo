@@ -12,7 +12,7 @@ export var configure = (initialState = {}) => {
 
   var store = redux.createStore(reducer, initialState, redux.compose(
     redux.applyMiddleware(thunk),
-    window.devToolsExcension ? window.devToolsExcension() : f => f
+    window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
 
   return store;
