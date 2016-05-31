@@ -2,10 +2,10 @@ import firebase from 'firebase';
 
 try {
   var config = {
-    apiKey: "AIzaSyBTE4eVZaxEWeYoo-6sDCZV8IryJUBA_eg",
-    authDomain: "my-todo-db.firebaseapp.com",
-    databaseURL: "https://my-todo-db.firebaseio.com",
-    storageBucket: "my-todo-db.appspot.com",
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    storageBucket: process.env.STORAGE_BUCKET,
   };
 
   firebase.initializeApp(config);
