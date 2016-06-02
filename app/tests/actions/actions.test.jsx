@@ -124,7 +124,6 @@ describe('Actions', () => {
       }, done)
     });
 
-
     it('should add todos and dispatch ADD_TODOS action', (done) => {
       const store = createMockStore({});
       const action = actions.startAddTodos();
@@ -138,6 +137,25 @@ describe('Actions', () => {
 
         done();
       }, done)
+    });
+  });
+
+  describe('Authentication tests', () => {
+
+    it('should generate LOGIN event', () => {
+      var action = {
+        type: 'LOGIN', uid: '123456'
+      };
+      var res = actions.login(action.uid);
+      expect(res).toEqual(action);
+    });
+
+    it('should generate LOGOUT event', () => {
+      var action = {
+        type: 'LOGOUT'
+      };
+      var res = actions.logout();
+      expect(res).toEqual(action);
     });
 
   });

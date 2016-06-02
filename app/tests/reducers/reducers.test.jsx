@@ -93,4 +93,24 @@ describe('Reducers', () => {
 
   });
 
+
+  describe('authReducer', () => {
+    it('should store uid on LOGIN', () => {
+      var action = {
+        type: 'LOGIN',
+        uid: '1234'
+      };
+      var res = reducers.authReducer(df({}), df(action));
+      expect(res.uid).toEqual(action.uid);
+    });
+
+    it('should clear auth block on LOGOUT', () => {
+      var action = {
+        type: 'LOGOUT'
+      };
+      var res = reducers.authReducer(df({uid:'54321'}), df(action));
+      expect(res).toEqual({});
+    });
+  });
+
 });
