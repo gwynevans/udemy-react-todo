@@ -91,6 +91,21 @@ describe('Reducers', () => {
       expect(res[0].text).toEqual(todos[0].text);
     });
 
+    it('should clear todos on LOGOUT', () => {
+      var todos = [{
+        id:1,
+        completed: false,
+        completedAt: undefined,
+        createdAt: 0,
+        text:'Test Todo'
+      }];
+      var action = {
+        type: 'LOGOUT',
+      };
+      var res = reducers.todosReducer(df(todos), df(action));
+      expect(res).toEqual([]);
+    });
+
   });
 
 
